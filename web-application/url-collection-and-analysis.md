@@ -32,9 +32,10 @@ echo example.com | gau --mc 200 | urldedupe > urls.txt
 
 #### URLFinder
 
-<pre class="language-sh"><code class="lang-sh"><strong>cat subdomains-alive.txt | urlfinder > urlfinder.txt
-</strong><strong>urlfinder -d example.com | sort -u > urlfinder.txt
-</strong></code></pre>
+```sh
+cat subdomains-alive.txt | urlfinder > urlfinder.txt
+urlfinder -d example.com | sort -u > urlfinder.txt
+```
 
 ***
 
@@ -43,7 +44,7 @@ echo example.com | gau --mc 200 | urldedupe > urls.txt
 #### Extract URLs with Parameters
 
 ```sh
-cat all-urls.txt | grep '=' | urldedupe | tee output.txt
+cat all-urls.txt | grep '=' | urldedupe | tee urls-param.txt
 ```
 
 #### GF SQLi Pattern
