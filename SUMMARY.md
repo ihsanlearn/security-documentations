@@ -22,6 +22,7 @@
     * [Git Repository Disclosure](web-application/vulnerability-discovery/git-repository-disclosure.md)
     * [Open Redirect](web-application/vulnerability-discovery/open-redirect/README.md)
       * [Testing](web-application/vulnerability-discovery/open-redirect/testing.md)
+      * [Open Redirect Chaining Vulnerabilities](web-application/vulnerability-discovery/open-redirect/open-redirect-chaining-vulnerabilities.md)
     * [Local File Inclusion (LFI) Testing](web-application/vulnerability-discovery/local-file-inclusion-lfi-testing.md)
     * [Cross-Site Scripting (XSS)](web-application/vulnerability-discovery/cross-site-scripting-xss/README.md)
       * [XSS Tool Testing](web-application/vulnerability-discovery/cross-site-scripting-xss/xss-tool-testing.md)
