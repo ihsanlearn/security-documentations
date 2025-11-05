@@ -28,6 +28,8 @@
     * [Remote-Code Execution (RCE)](web-application/vulnerability-discovery/remote-code-execution-rce.md)
     * [Cross-Site Scripting (XSS)](web-application/vulnerability-discovery/cross-site-scripting-xss/README.md)
       * [XSS Tool Testing](web-application/vulnerability-discovery/cross-site-scripting-xss/xss-tool-testing.md)
+      * [Payload](web-application/vulnerability-discovery/cross-site-scripting-xss/payload.md)
+      * [Bypass Filter Block](web-application/vulnerability-discovery/cross-site-scripting-xss/bypass-filter-block.md)
     * [SQL Injection](web-application/vulnerability-discovery/sql-injection.md)
     * [Server-Side Request Forgery (SSRF)](web-application/vulnerability-discovery/server-side-request-forgery-ssrf/README.md)
       * [SSRF Testing](web-application/vulnerability-discovery/server-side-request-forgery-ssrf/ssrf-testing.md)
