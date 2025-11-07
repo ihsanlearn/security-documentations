@@ -34,7 +34,7 @@
     * [Server-Side Request Forgery (SSRF)](web-application/vulnerability-discovery/server-side-request-forgery-ssrf/README.md)
       * [SSRF Testing](web-application/vulnerability-discovery/server-side-request-forgery-ssrf/ssrf-testing.md)
     * [Broken Access Control](web-application/vulnerability-discovery/broken-access-control/README.md)
-      * [Insecure Direct Object Reference (IDOR) / Authorization Flaws](web-application/vulnerability-discovery/broken-access-control/insecure-direct-object-reference-idor-authorization-flaws.md)
+      * [Insecure Direct Object Reference (IDOR)](web-application/vulnerability-discovery/broken-access-control/insecure-direct-object-reference-idor.md)
       * [Broken Authentication & Session Management](web-application/vulnerability-discovery/broken-access-control/broken-authentication-and-session-management.md)
       * [Vertical Privilege Escalation](web-application/vulnerability-discovery/broken-access-control/vertical-privilege-escalation.md)
       * [Horizontal Privilege Escalation](web-application/vulnerability-discovery/broken-access-control/horizontal-privilege-escalation.md)
