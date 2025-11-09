@@ -30,6 +30,8 @@
       * [Insecure Direct Object Reference (IDOR)](web-application/vulnerability-discovery/a01-broken-access-control/insecure-direct-object-reference-idor.md)
       * [Vertical Privilege Escalation](web-application/vulnerability-discovery/a01-broken-access-control/vertical-privilege-escalation.md)
     * [A02: Security Misconfiguration](web-application/vulnerability-discovery/a02-security-misconfiguration/README.md)
+      * [Vulnerabilities](web-application/vulnerability-discovery/a02-security-misconfiguration/vulnerabilities.md)
+      * [Scanning (Nmap)](web-application/vulnerability-discovery/a02-security-misconfiguration/scanning-nmap.md)
       * [Cross Origin Resource Sharing (CORS) Vulnerability](web-application/vulnerability-discovery/a02-security-misconfiguration/cross-origin-resource-sharing-cors-vulnerability/README.md)
         * [Testing](web-application/vulnerability-discovery/a02-security-misconfiguration/cross-origin-resource-sharing-cors-vulnerability/testing.md)
         * [CORS Bypass](web-application/vulnerability-discovery/a02-security-misconfiguration/cross-origin-resource-sharing-cors-vulnerability/cors-bypass.md)
