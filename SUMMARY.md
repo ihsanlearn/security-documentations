@@ -12,6 +12,7 @@
     * [Directory & File Bruteforcing](web-application/reconnaissance/directory-and-file-bruteforcing.md)
     * [Hidden Parameter Discovery](web-application/reconnaissance/hidden-parameter-discovery.md)
     * [Scanning (Nmap)](web-application/reconnaissance/scanning-nmap.md)
+    * [Visual (aquatone)](web-application/reconnaissance/visual-aquatone.md)
   * [Vulnerability Discovery](web-application/vulnerability-discovery/README.md)
     * [Vulnerability Scanning](web-application/vulnerability-discovery/vulnerability-scanning.md)
     * [Wordpress Security Testing](web-application/vulnerability-discovery/wordpress-security-testing.md)
