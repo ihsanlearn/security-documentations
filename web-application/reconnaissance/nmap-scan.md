@@ -1,4 +1,4 @@
-# Scanning (Nmap)
+# Nmap Scan
 
 ***
 
@@ -42,6 +42,26 @@ nmap -sV -sC -T4 [target/ip/domain]
 *   **`-p-` (Scan All Ports)**
 
     Kenapa? Secara _default_, Nmap hanya memindai 1.000 port paling umum. _Developer_ yang "nakal" mungkin menyembunyikan panel admin atau _database_ di _port_ aneh seperti `33333`. Flag `-p-` akan memindai semua 65.535 port. Ini membutuhkan waktu lama, tapi di sinilah Anda menemukan "harta karun" A02 (Layanan yang Tidak Perlu Terekspos).
+
+***
+
+## Flags & opsi penting (dijelaskan per bagian)
+
+* `-p <ports>` — port(s) to scan. Contoh: `-p 22,80,443` atau `-p-` (semua 1-65535). Gunakan `-p-` hati-hati: heavy.
+* `-T0..-T5` — timing templates (0 slowest/stealthiest → 5 fastest/most aggressive). Untuk production gunakan `-T2` atau `-T3`. `-T4/-T5` di lab atau saat kamu mengontrol target.
+* `--min-rate <n>` — minimum packets per second; berguna kalau ingin memastikan throughput minimal. Gunakan dengan hati-hati.
+* `--max-retries <n>` — jumlah retry paket; kurangi retries untuk jaringan baik, tingkatkan untuk jaringan lossy.
+* `--host-timeout <ms>` — abort host jika melebihi waktu tertentu; mencegah scan macet di satu host.
+* `-sV --version-intensity <level>` — tingkat agresivitas fingerprint version detection (0–9). Turunkan untuk cepat.
+* `--script <scripts>` — jalankan NSE script(s). Bisa pakai kategori, contoh: `--script vuln` atau list `http-vuln*`.
+* `--script-args` — argumen untuk NSE (mis. cred lists untuk brute).
+* `-oA <basename>` — output tiga format (normal, xml, grepable). Sangat berguna untuk penyimpanan.
+* `-oX/-oN/-oG/-oJ` — output XML / normal / grepable / JSON (nmap 7.80+ mendukung `-oJ` untuk JSON).
+* `--reason` — tampilkan alasan port ditandai (RST/timeout/etc.).
+* `--open` — hanya tunjukkan port yang terbuka (hilangkan closed/filtered dari output).
+* `-v/-vv` — verbose level; `-d` untuk debugging.
+* `--top-ports <N>` — scan N port paling populer (shortcut efisien).
+* `-sC` — jalankan script default (equivalent `--script=default`). Berguna tetapi tahu apa yang berjalan.
 
 ***
 
