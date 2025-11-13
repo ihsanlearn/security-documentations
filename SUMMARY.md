@@ -47,6 +47,7 @@
         * [SSRF Testing](web-application/vulnerability-discovery/a06-insecure-design/server-side-request-forgery-ssrf/ssrf-testing.md)
     * [A08: Software or Data Integrity Failures](web-application/vulnerability-discovery/a08-software-or-data-integrity-failures/README.md)
       * [Cross-Site Request Forgery](web-application/vulnerability-discovery/a08-software-or-data-integrity-failures/cross-site-request-forgery.md)
+    * [A03: Software Supply Chain Failures](web-application/vulnerability-discovery/a03-software-supply-chain-failures.md)
 * [Application Programming Interface (API)](application-programming-interface-api.md)
 * [Cloud Infra](cloud-infra.md)
 * [CI / CD Repositories](ci-cd-repositories.md)
