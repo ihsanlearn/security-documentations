@@ -49,6 +49,7 @@
       * [Cross-Site Request Forgery](web-application/vulnerability-discovery/a08-software-or-data-integrity-failures/cross-site-request-forgery.md)
     * [A03: Software Supply Chain Failures](web-application/vulnerability-discovery/a03-software-supply-chain-failures/README.md)
       * [Use of Components with Known Vulnerabilities](web-application/vulnerability-discovery/a03-software-supply-chain-failures/use-of-components-with-known-vulnerabilities.md)
+      * [Typosquatting & Dependency Confusion](web-application/vulnerability-discovery/a03-software-supply-chain-failures/typosquatting-and-dependency-confusion.md)
 * [Application Programming Interface (API)](application-programming-interface-api.md)
 * [Cloud Infra](cloud-infra.md)
 * [CI / CD Repositories](ci-cd-repositories.md)
