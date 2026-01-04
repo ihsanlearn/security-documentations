@@ -14,6 +14,7 @@
     * [Nmap Scan](web-application/reconnaissance/nmap-scan.md)
     * [Visual (aquatone)](web-application/reconnaissance/visual-aquatone.md)
     * [Naabu Scan](web-application/reconnaissance/naabu-scan.md)
+    * [Target Selection](web-application/reconnaissance/target-selection.md)
   * [Vulnerability Discovery](web-application/vulnerability-discovery/README.md)
     * [Vulnerability Scanning](web-application/vulnerability-discovery/vulnerability-scanning.md)
     * [Wordpress Security Testing](web-application/vulnerability-discovery/wordpress-security-testing.md)
@@ -72,3 +73,4 @@
 * [To Do](to-do.md)
 * [To Research](to-research.md)
 * [Hold Report](hold-report.md)
+* [Day to Day Failure](day-to-day-failure.md)
