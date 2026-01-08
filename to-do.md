@@ -4,3 +4,4 @@
 2. \[Future] membuat agar bisa input httpx result file untuk analisis prioritas target scoring.
 3. \[Future] membuat agar bisa set header e.g. User-Agent
 4. \[Hackthic] menambahkan fitur delete domain out of scope
+5. \[Hackthic] masalah status code 503 menjadi prioritas
