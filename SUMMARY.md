@@ -26,6 +26,7 @@
         * [Password-Based Login](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/password-based-login.md)
         * [Multi-Factor Authentication](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/multi-factor-authentication.md)
         * [Other Authentication Mechanism](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/other-authentication-mechanism.md)
+        * [OAuth](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/oauth.md)
     * [A02: Security Misconfiguration](web-application/vulnerability-discovery/a02-security-misconfiguration/README.md)
       * [Vulnerabilities](web-application/vulnerability-discovery/a02-security-misconfiguration/vulnerabilities.md)
       * [Subdomain Takeover](web-application/vulnerability-discovery/a02-security-misconfiguration/subdomain-takeover/README.md)
