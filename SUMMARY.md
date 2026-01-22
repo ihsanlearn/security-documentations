@@ -2,6 +2,7 @@
 
 * [Bug Hunting Documentations](README.md)
 * [Web Application](web-application/README.md)
+  * [Universal Framework](web-application/universal-framework.md)
   * [Reconnaissance](web-application/reconnaissance/README.md)
     * [Subdomain Enumeration](web-application/reconnaissance/subdomain-enumeration.md)
     * [Target Selection](web-application/reconnaissance/target-selection.md)
