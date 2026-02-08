@@ -52,5 +52,18 @@ Coba untu berinteraksi dengan endpoint itu lalu amati bagaimana perilaku untuk m
 
 #### Identifying supported HTTP methods
 
+HTTP methods menentukan tindakan yang akan dilakukan pada sumber daya, seperti:
 
+* GET - Mengambil data from a resource
+* PATCH - Menerapkan perubahan sebagian pada sumber daya
+* OPTIONS - Mengambil informasi types of request method yang bisa digunakan pada suatu sumber daya.
 
+API endpoint memungkinkan mendukung HTTP method yang berbeda, maka dari itu sangat penting untuk mengetes semua potential method saat menginvestigasi.
+
+#### Identifying supported Content-Types
+
+Sering kali sebuah endpoint mengharapkan data dengan suatu format spesifik. Oleh karena itu, memungkinkan untuk berperilaku berbeda tergantung pada request content type. Mengubah content type mungkin akan:
+
+* Triggers error yang mengungkap informasi berguna
+* Bypass flawed defences
+* Manfaatkan perbedaan dalam logika pemrosesan. Misalnya, sebuah API mungkin aman saat menangani data JSON tetapi rentan terhadap serangan injeksi saat menangani XML.
