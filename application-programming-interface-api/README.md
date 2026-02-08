@@ -67,3 +67,14 @@ Sering kali sebuah endpoint mengharapkan data dengan suatu format spesifik. Oleh
 * Triggers error yang mengungkap informasi berguna
 * Bypass flawed defences
 * Manfaatkan perbedaan dalam logika pemrosesan. Misalnya, sebuah API mungkin aman saat menangani data JSON tetapi rentan terhadap serangan injeksi saat menangani XML.
+
+#### Using intruder to find hidden endpoints (can also use other tools)
+
+Setelah menemukan beberapa API endpoint, gunakan alat untuk bruteforoce/fuzzing endpoint lain untuk menemukan lebih banyak attack surface dan melakukan pengetesan pada setiap endpoint.
+
+***
+
+## Finding Hidden Parameters
+
+
+
