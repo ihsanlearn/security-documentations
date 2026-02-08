@@ -38,5 +38,7 @@ Jika menemukan sebuah endpoint, pastikan untuk selalu menginvestigasi base path-
 /api
 ```
 
+Selalu biasakan untuk crawl atau cari API endpoints dimanapun itu entah coba di url atau di berbagai fitur yang dapat expose API endpoint.
+
 ***
 
