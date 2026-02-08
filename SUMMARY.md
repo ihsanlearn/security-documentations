@@ -16,6 +16,7 @@
     * [Nmap Scan](web-application/reconnaissance/nmap-scan.md)
     * [Visual (aquatone)](web-application/reconnaissance/visual-aquatone.md)
     * [Naabu Scan](web-application/reconnaissance/naabu-scan.md)
+    * [API Endpoints](web-application/reconnaissance/api-endpoints.md)
   * [Vulnerability Discovery](web-application/vulnerability-discovery/README.md)
     * [Vulnerability Scanning](web-application/vulnerability-discovery/vulnerability-scanning.md)
     * [Wordpress Security Testing](web-application/vulnerability-discovery/wordpress-security-testing.md)
