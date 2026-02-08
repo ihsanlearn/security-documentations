@@ -42,3 +42,15 @@ Selalu biasakan untuk crawl atau cari API endpoints dimanapun itu entah coba di 
 
 ***
 
+## Identifying API Endpoints
+
+Mengumpulkan berbagai informasi dan API endpoints yang bisa di dapat dengan berbagai cara (dapat di lihat di bagian Reconaissance API).
+
+### Interacting with API endpoints
+
+Coba untu berinteraksi dengan endpoint itu lalu amati bagaimana perilaku untuk menemukan permukaan serangan. Menginvestigasi perubahan response dengan mengubah HTTP Method atau media type atau input lainnya, jangan lupa juga untuk mengapati pesan error yang terkadang ini berguna untuk membuat HTTP Request yang valid.
+
+#### Identifying supported HTTP methods
+
+
+
