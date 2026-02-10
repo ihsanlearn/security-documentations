@@ -93,7 +93,7 @@ app.put('/api/profile/update', async (req, res) => {
 });
 ```
 
-sangat rentan apabila request seperti ini:
+sangat rentan dengan request seperti ini:
 
 ```json
 // default
@@ -109,4 +109,12 @@ sangat rentan apabila request seperti ini:
   "is_admin": true
 }
 ```
+
+{% hint style="info" %}
+Disini finding hidden parameter sangat diperlukan, karena ketika kita menemukan mass assignment vulnerability kita dapat menggunakan parameter untuk mempengaruhi aplikasi.
+{% endhint %}
+
+***
+
+## Server-Side Parameter Pollution
 
