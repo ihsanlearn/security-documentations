@@ -76,5 +76,37 @@ Setelah menemukan beberapa API endpoint, gunakan alat untuk bruteforoce/fuzzing 
 
 ## Finding Hidden Parameters
 
+Gunakan berbagai tools untuk menemukan parameter yang mungkin tidak terdokumentasi, ini menjadi peluang baru untuk mencari tahu perilaku aplikasi.
 
+### Mass Assignment Vulnerabilities
+
+Secara sederhana, ini adalah kerentanan di mana aplikasi secara otomatis memetakan input dari user (biasanya dalam bentuk JSON di API) langsung ke database atau objek internal tanpa melakukan filter mana aja yang boleh diubah, seperti contoh kode dibawah ini:
+
+```typescript
+app.put('/api/profile/update', async (req, res) => {
+    // SANGAT BERBAHAYA: req.body langsung dimasukkan ke fungsi update
+    await User.update(req.body, {
+        where: { id: req.user.id }
+    });
+    
+    res.send({ status: "Success" });
+});
+```
+
+sangat rentan apabila request seperti ini:
+
+```json
+// default
+{
+  "username": "ihsan_hacker",
+  "bio": "Sedang belajar Bug Bounty"
+}
+
+// after modification
+{
+  "username": "ihsan_hacker",
+  "bio": "Sedang belajar Bug Bounty",
+  "is_admin": true
+}
+```
 
