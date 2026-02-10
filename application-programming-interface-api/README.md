@@ -195,3 +195,43 @@ Node.js / express   - first parameter only
 ***
 
 ### Testing for SSPP in REST path
+
+Pada RESTful API, parameter names and/or value in the url path, tapi tidak pada query string, sebagai contoh:
+
+```http
+/api/users/123
+```
+
+Anggap sebuah aplikasi mengizinkanmu untuk update profil berdasarkan username. Request dikirim seperti:
+
+```http
+GET /edit_profile.php?name=peter
+```
+
+Lalu server-side mengirimkan request ke internal api mereka:
+
+```http
+GET /api/private/users/peter
+```
+
+Hal in dapat memungkinkan attacker untuk memanipulasi server-side URL Path untuk mengeksploitasi API. Untuk mengetes kerentanan ini, coba untuk menambahkan path traversal untuk memodifikasi parameter dan lihat bagaimana aplikasi meresponnya.
+
+```http
+GET /edit_profile.php?name=peter%2f..%2fadmin
+```
+
+Mungkin server akan request seperti:
+
+```http
+GET /api/private/users/peter/../admin
+```
+
+kalau server-side client atau backend API normalisasi path ini, maka akan menjadi:
+
+```
+/api/private/users/admin
+```
+
+{% hint style="info" %}
+Jangan lupa untuk mencoba truncate path dengan %23, atau mencoba yang lain dengan encode '&' atau '?'
+{% endhint %}
