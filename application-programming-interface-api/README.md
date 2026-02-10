@@ -191,3 +191,7 @@ ASP.NET                  - combines both parameters
 
 Node.js / express   - first parameter only
 {% endhint %}
+
+***
+
+### Testing for SSPP in REST path
