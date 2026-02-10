@@ -235,3 +235,50 @@ kalau server-side client atau backend API normalisasi path ini, maka akan menjad
 {% hint style="info" %}
 Jangan lupa untuk mencoba truncate path dengan %23, atau mencoba yang lain dengan encode '&' atau '?'
 {% endhint %}
+
+***
+
+### Testing for SSPP in structured data format
+
+Attacker mungkin dapat memanipulasi parameter untuk mengeksploitasi kerentanan pada server yang memproses data seperti JSON atau XML.
+
+Sebagai contoh, anggap sebuah aplikasi mengizinkan untuk edit profile, seperti:
+
+```http
+POST /myaccount
+name=peter
+```
+
+Lalu server-side request:
+
+```http
+PATCH /users/7312/update
+{"name":"peter"}
+```
+
+Ini memungkinkan untuk menambahkan data lain seperti:
+
+```http
+POST /myaccount
+name=peter","access_level":"administrator
+```
+
+Jika tidak ada validasi atau sanitasi yang memadai, maka server-side request dapat menjadi:
+
+```http
+PATCH /users/7312/update
+{name="peter","access_level":"administrator"}
+```
+
+Mungkin hal itu akan bekerja lalu memberikan akses administrator. Hal ini juga dapat bekerja apabila client-side input berupa JSON, dapat dicoba seperti:
+
+```http
+POST /myaccount
+{"name": "peter\",\"access_level\":\"administrator"}
+```
+
+{% hint style="info" %}
+Pada hal ini finding hidden parameter berperan sangat penting.
+{% endhint %}
+
+***
