@@ -118,3 +118,76 @@ Disini finding hidden parameter sangat diperlukan, karena ketika kita menemukan 
 
 ## Server-Side Parameter Pollution
 
+SSPP terjadi ketika sebuah situs web menyematkan input pengguna dalam server side request ke internal API tanpa pengkodean yang memadai. Ini berarti memungkinkan attacker untuk memanipulasi atau injeksi parameter yang dapat menimbulkan hal hal dibawah ini:
+
+* Override parameter
+* Memodifikasi perilaku aplikasi
+* Mengakses data tanpa izin
+
+{% hint style="info" %}
+Lakukan pengetesan pada input apapun untuk parameter pollution seperti query parameters, form fields, headers, dan url path mungkin juga dapat rentan.
+{% endhint %}
+
+Untuk mengetes SSPP pada query string, tambahkan query syntax characters seperti `#, &, =` pada input dan amati bagaimana respon aplikasi.
+
+### Truncating query strings
+
+Gunakan # untuk mencoba memotong server-side request. Untuk membantu menafsirkan response, tambahkan string setelah #.
+
+Contoh:
+
+```http
+// modifikasi menjadi seperti ini
+GET /userSearch?name=peter%23foo
+
+// request ke backend akan menjadi seperti ini
+GET /users/search?name=peter#foo&isAdmin=false
+```
+
+Penjelasan: Anggap sebuah request selalu memiliki parameter akhiran. `%23` disitu bertujuan untuk meloloskan dari front end karena bisa dianggap sebagai id menuju sebuah section, dengan encoding ini dapat meloloskan (apabila request tidak di decode), dan foo disitu menjadi sebuah pelengkap agar sampah yang dibuat memiliki struktur yang jelas. Sampai ke backend, `#` tetap ada sehingga ini memungkinkan untuk mengabaikan semua setelah karakter `#` karena backend menganggap ini tidak penting.
+
+### Injecting invalid parameters
+
+Sama seperti sebelumnya, kali ini coba gunakan karakter `&` yang di encode, seperti:
+
+```http
+// modifikasi menjadi seperti ini
+GET /userSearch?name=peter%26foo=xyz&back=/home
+
+// request ke backend akan menjadi seperti ini
+GET /users/search?name=peter&foo=xyz&publicProfile=true
+```
+
+Amati respons dan perilaku aplikasi setelah pengetesan, lakukan eksploitasi lebih lanjut apabila memungkinkan.
+
+### Injecting valid parameters
+
+Coba untuk menambahkan parameter yang valid
+
+```http
+// coba
+GET /userSearch?name=peter%26email=foo&back=/home
+
+// request dikirim ke backend
+GET /users/search?name=peter&email=foo&publicProfile=true
+```
+
+### Overriding existing parameter
+
+Untuk melakukan hal ini, coba untuk menambahkan parameter dengan nama yang sama, seperti:
+
+```http
+// coba
+GET /userSearch?name=peter%26name=carlos&back=/home
+
+// request dikirim ke backend
+GET /users/search?name=peter&name=carlos&publicProfile=true
+```
+
+{% hint style="info" %}
+PHP                          - only last parameter&#x20;
+
+ASP.NET                  - combines both parameters
+
+Node.js / express   - first parameter only
+{% endhint %}
