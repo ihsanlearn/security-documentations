@@ -34,7 +34,7 @@ type Product {
     price: Int
 }
 
-// ! menandakan value nullable, wajib
+# ! menandakan value nullable, wajib
 ```
 
 Schema wajib memiliki setidaknya satu query yang tersedia. Biasanya juga mengandung detail dari mutasi yang tersedia.
@@ -103,7 +103,7 @@ mutation {
 
 ### Fields
 
-id, name.firstname, dan name.lastname disini adalah fields yang diminta.
+`id`, `name.firstname`, dan `name.lastname` disini adalah fields yang diminta.
 
 ```graphql
 query myGetEmployeeQuery {
@@ -134,8 +134,146 @@ query myGetEmployeeQuery {
 
 ```
 
+{% hint style="info" %}
+If user-supplied arguments are used to access objects directly then a GraphQL API can be vulnerable to access control vulnerabilities such as insecure direct object references (IDOR).
+{% endhint %}
+
 ### Variables
 
+```graphql
+query getEmployeeWithVariable($id: ID!) {
+    getEmployees(id:$id) {
+        name {
+            firstname
+            lastname
+        }
+     }
+}
+
+Variables:
+{
+    "id": 1
+}
 ```
-// Some code
+
+### Aliases
+
+```graphql
+# invalid query
+query getProductDetails {
+    getProduct(id: 1) {
+        id
+        name
+    }
+    getProduct(id: 2) {
+        id
+        name
+    }
+}
+
+# valid query
+query getProductDetails {
+    product1: getProduct(id: "1") {
+        id
+        name
+    }
+    product2: getProduct(id: "2") {
+        id
+        name
+    }
+}
+
+```
+
+```json
+// response
+{
+    "data": {
+        "product1": {
+            "id": 1,
+            "name": "Juice Extractor"
+         },
+        "product2": {
+            "id": 2,
+            "name": "Fruit Overlays"
+        }
+    }
+}
+```
+
+{% hint style="info" %}
+Using aliases with mutations effectively enables you to send multiple GraphQL messages in one HTTP request, but it can be vulnerable like bypass some rate limit.
+{% endhint %}
+
+### Fragments
+
+Fragments adalah bagian yang dapat digunakan kembali pada queries atau mutations. Perilaku fragments mirip dengan function.
+
+```graphql
+fragment productInfo on Product {
+    id
+    name
+    listed
+}
+
+query {
+    getProduct(id: 1) {
+        ...productInfo
+        stock
+    }
+}
+
+```
+
+```json
+// response
+{
+    "data": {
+        "getProduct": {
+            "id": 1,
+            "name": "Juice Extractor",
+            "listed": "no",
+            "stock": 5
+        }
+    }
+}
+
+```
+
+```graphql
+# example
+query GetComparison($userA: ID!, $userB: ID!, $showDetail: Boolean!) {
+   pembeli: user(id: $userA) {
+      ...UserFields 
+    } 
+   penjual: user(id: $userB) {
+      ...UserFields 
+    email @include(if: $showDetail) 
+   } 
+ } 
+ 
+ fragment UserFields on User { 
+    id 
+    username 
+    bio 
+    reputation(format: \"PERCENTAGE\") 
+ }
+```
+
+## Subscription
+
+Subscription memungkinkan client untuk tetap terkoneksi dengan server dalam waktu yang lama, berbeda dengan query yang setelah request response koneksi terputus. Subscription biasanya diimplementasikan menggunakan WebSocket.
+
+```graphql
+subscription OnNewMessage { newMessage { sender text timestamp } }
+```
+
+***
+
+## Introspections
+
+Introspections adalah fungsi built-in GraphQL yang memungkinkan untuk mendapatkan informasi tentang schema melalui query
+
+```graphql
+query { __schema { types { name kind } } }
 ```
