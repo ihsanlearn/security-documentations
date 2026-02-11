@@ -73,6 +73,7 @@
         * [SSRF Testing](web-application/vulnerability-discovery/a06-insecure-design/server-side-request-forgery-ssrf/ssrf-testing.md)
     * [A08: Software or Data Integrity Failures](web-application/vulnerability-discovery/a08-software-or-data-integrity-failures.md)
 * [Application Programming Interface (API)](application-programming-interface-api/README.md)
+  * [GraphQL](application-programming-interface-api/graphql.md)
   * [API2:2023 Broken Authentication](application-programming-interface-api/api2-2023-broken-authentication/README.md)
     * [OTP Bypass](application-programming-interface-api/api2-2023-broken-authentication/otp-bypass.md)
 * [Cloud Infra](cloud-infra.md)
