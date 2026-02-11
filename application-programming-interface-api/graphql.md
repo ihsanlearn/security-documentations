@@ -101,3 +101,41 @@ mutation {
 
 ## Components of queries and mutations
 
+### Fields
+
+id, name.firstname, dan name.lastname disini adalah fields yang diminta.
+
+```graphql
+query myGetEmployeeQuery {
+    getEmployees {
+        id        
+        name {    
+            firstname
+            lastname
+        }
+    }
+}
+
+```
+
+### Arguments
+
+id:1 disini merupakan argument, lalu server hanya merespon dengan id yang sesuai.
+
+```graphql
+query myGetEmployeeQuery {
+    getEmployees(id:1) {
+        name {
+            firstname
+            lastname
+        }
+    }
+}
+
+```
+
+### Variables
+
+```
+// Some code
+```
