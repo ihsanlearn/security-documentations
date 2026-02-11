@@ -22,6 +22,15 @@ The data described by a GraphQL schema can be manipulated using three types of o
 
 Hampir semua operasi GraphQL menggunakan endpoint yang sama dan pada umumnya menggunakan POST request. Dengan GraphQL, type dan name of operation menentukan bagaimana query ditangani.
 
+```graphql
+/graphql
+/api
+/api/graphql
+/graphql/api
+/graphql/graphql
+/graphql/v1
+```
+
 ***
 
 ## What is GraphQL schema?
