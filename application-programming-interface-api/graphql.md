@@ -8,6 +8,8 @@ GraphQL adalah query language yang dirancang untuk memfasilitasi komunikasi yang
 
 GraphQL mendefinisikan kontrak dimana client memungkinkan berkomunikasi dengan server. Client tidak perlu tahu dimana letak data. Melainkan, client mengirim query ke GraphQL server, lalu ia fetch data.
 
+***
+
 ## How GraphQL works?
 
 GraphQL schema define the structure of the service's data, listing the available objects (known as types), fields, and relationships.
@@ -19,6 +21,8 @@ The data described by a GraphQL schema can be manipulated using three types of o
 * Subscriptions are similar to queries, but set up a permanent connection by which a server can proactively push data to a client in the specified format.
 
 Hampir semua operasi GraphQL menggunakan endpoint yang sama dan pada umumnya menggunakan POST request. Dengan GraphQL, type dan name of operation menentukan bagaimana query ditangani.
+
+***
 
 ## What is GraphQL schema?
 
@@ -259,6 +263,8 @@ query GetComparison($userA: ID!, $userB: ID!, $showDetail: Boolean!) {
     reputation(format: \"PERCENTAGE\") 
  }
 ```
+
+***
 
 ## Subscription
 
