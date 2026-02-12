@@ -102,3 +102,26 @@ Meskipun introspection disable sepenuhnya, terkadang dengan suggestions dapat me
 Ini umumnya digunakan ketika kueri sedikit tidak akurat tetapi masih dapat dikenali, for example "There is no entry for 'productInfo'. Did you mean 'productInformation' instead?"
 
 Gunakan tools [Clairvoyance](https://github.com/nikitastupin/clairvoyance)
+
+***
+
+## Bypassing GraphQL introspection defenses
+
+Jika tidak bisa mendapatkan query dari introspection pada API yang sedang ditest, coba untuk menambahkan special charachter setelah `__schema` keyword.
+
+Ketika developer disable introspection, dia bisa menggunakan regex untuk exclude kata `__schema` pada queries. Coba untuk menambahkan spasi, new lines dan commas, yang mana itu diabaikan oleh GraphQL tapi tidak oleh regex yang salah.
+
+Oleh karena itu, jika developer hanya mengecualikan `__schema{` maka query dibawah ini tidak akan terkecualikan:
+
+```json
+{
+    "query": "query{__schema
+    {queryType{name}}}"
+}
+```
+
+Jika ini tidak berhasil, coba jalankan probe melalui alternative request method, karena introspection mungkin hanya dinonaktifkan melalui POST. Coba permintaan GET, atau permintaan POST dengan content-type x-www-form-urlencoded.
+
+```http
+GET /graphql?query=query%7B__schema%0A%7BqueryType%7Bname%7D%7D%7D
+```
