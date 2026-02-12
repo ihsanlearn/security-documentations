@@ -305,6 +305,9 @@ query IntrospectionQuery {
       args {
         ...InputValue
       }
+      onOperation  #Often needs to be deleted to run query
+      onFragment   #Often needs to be deleted to run query
+      onField      #Often needs to be deleted to run query
     }
   }
 }
@@ -382,3 +385,7 @@ fragment TypeRef on __Type {
   }
 }
 ```
+
+{% hint style="info" %}
+If introspection is enabled but the above query doesn't run, try removing the `onOperation`, `onFragment`, and `onField` directives from the query structure. Many endpoints do not accept these directives as part of an introspection query, and you can often have more success with introspection by removing them.
+{% endhint %}

@@ -77,3 +77,28 @@ query {
 
 ## Discovering Schema information
 
+### Using introspection & Running a full introspection query&#x20;
+
+Baca pada dokumentasi utama GraphQL, [disini](./#introspections).
+
+### Probing for introspection
+
+Coba gunakan query ini untuk mengecek apakah introspection enabled, Jika introspection enabled, maka responnya adalah nama dari query yang tersedia.
+
+```json
+{
+    "query": "{__schema{queryType{name}}}"
+}
+```
+
+### Visualizing introspection results
+
+Response introspection query dapat penuh dengan informasi, tapi sering kali sangat panjang dan susah untuk diproses/dilihat. Maka dari itu, gunakan [GraphQL visualizer](http://nathanrandal.com/graphql-visualizer/) untuk melihat bagaimana hubungan antar entitas pada schema.
+
+### Suggestions
+
+Meskipun introspection disable sepenuhnya, terkadang dengan suggestions dapat memungiut informasi pada struktur API. Suggestion adalah fitur dari Apollo GraphQL platform di mana server dapat menyarankan perubahan kueri dalam pesan kesalahan.
+
+Ini umumnya digunakan ketika kueri sedikit tidak akurat tetapi masih dapat dikenali, for example "There is no entry for 'productInfo'. Did you mean 'productInformation' instead?"
+
+Gunakan tools [Clairvoyance](https://github.com/nikitastupin/clairvoyance)
