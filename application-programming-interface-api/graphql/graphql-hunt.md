@@ -125,3 +125,25 @@ Jika ini tidak berhasil, coba jalankan probe melalui alternative request method,
 ```http
 GET /graphql?query=query%7B__schema%0A%7BqueryType%7Bname%7D%7D%7D
 ```
+
+***
+
+## Bypassing rate limiting using aliases
+
+Untuk melihat kembali aliases itu apa, [baca disini](./#aliases).
+
+Contoh implementasi dari penggunaan aliases untuk bypass rate limit dibawah ini adalah mengecek kode diskon mana yang valid
+
+```graphql
+query isValidDiscount($code: Int) {
+    isvalidDiscount(code:$code){
+        valid
+    }
+    isValidDiscount2:isValidDiscount(code:$code){
+        valid
+    }
+    isValidDiscount3:isValidDiscount(code:$code){
+        valid
+    }
+}
+```
