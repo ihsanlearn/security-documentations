@@ -23,7 +23,6 @@
     * [A01: Broken Access Control](web-application/vulnerability-discovery/a01-broken-access-control/README.md)
       * [Insecure Direct Object Reference (IDOR)](web-application/vulnerability-discovery/a01-broken-access-control/insecure-direct-object-reference-idor.md)
       * [Vertical Privilege Escalation](web-application/vulnerability-discovery/a01-broken-access-control/vertical-privilege-escalation.md)
-      * [Cross-Site Request Forgery](web-application/vulnerability-discovery/a01-broken-access-control/cross-site-request-forgery.md)
       * [Broken Authentication](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/README.md)
         * [Password-Based Login](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/password-based-login.md)
         * [Multi-Factor Authentication](web-application/vulnerability-discovery/a01-broken-access-control/broken-authentication/multi-factor-authentication.md)
