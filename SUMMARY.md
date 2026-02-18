@@ -73,6 +73,7 @@
         * [Open Redirect Chaining Vulnerabilities](web-application/vulnerability-discovery/a06-insecure-design/open-redirect/open-redirect-chaining-vulnerabilities.md)
       * [Server-Side Request Forgery (SSRF)](web-application/vulnerability-discovery/a06-insecure-design/server-side-request-forgery-ssrf/README.md)
         * [SSRF Testing](web-application/vulnerability-discovery/a06-insecure-design/server-side-request-forgery-ssrf/ssrf-testing.md)
+      * [Business Logic Vulnerability](web-application/vulnerability-discovery/a06-insecure-design/business-logic-vulnerability.md)
     * [A08: Software or Data Integrity Failures](web-application/vulnerability-discovery/a08-software-or-data-integrity-failures.md)
 * [Application Programming Interface (API)](application-programming-interface-api/README.md)
   * [GraphQL](application-programming-interface-api/graphql/README.md)
