@@ -6,4 +6,5 @@
 4. \[Hackthic] menambahkan api documentation dorks.
 5. \[Burpsuite] install Autorize, JS Miner, OpenAPI parser
 6. \[Tools] membuat tools mencari endpoint graphql dan api endpoint
+7. \[Burpsuite] install jython.
 
