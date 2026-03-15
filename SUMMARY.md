@@ -89,6 +89,7 @@
 * [Hold Report](hold-report.md)
 * [Day to Day Failure](day-to-day-failure.md)
 * [Bug Bounty Automation Plan](bug-bounty-automation-plan/README.md)
+  * [Data Interface](bug-bounty-automation-plan/data-interface.md)
   * [Architecture](bug-bounty-automation-plan/architecture.md)
   * [Recon Automation Stack](bug-bounty-automation-plan/recon-automation-stack.md)
   * [Data Processing Stack](bug-bounty-automation-plan/data-processing-stack.md)

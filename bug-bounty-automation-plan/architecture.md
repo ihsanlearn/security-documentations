@@ -46,40 +46,33 @@ To do:
      Perfect Worker
 ```
 
-Di sinilah Perfect bekerja.
-
-* Worker mulai bekerja begitu melihat ada antrean baru. Dia mengambil tugas "Recon google.com".
-* Dia menjalankan `subfinder`, `amass`, dan `assetfinder`.
-* Hasilnya (ribuan subdomain) tidak disimpan di file `.txt`, tapi langsung di-_insert_ ke PostgreSQL.
-
-**Subdomain Enumeration:**
+**Subdomain Enumeration (sequence 1)**
 
 * Sistem menjalankan `subfinder`, `assetfinder`, dan `amass` secara paralel.
 * Logic: Hasil digabung (unique) disimpan ke tabel `subdomains`.
 
-**DNS Resolution:**
+**DNS Resolution (sequence 2)**
 
 * `dnsx` digunakan untuk memilah subdomain yang sudah mati.
 
-**HTTP Probing & Fingerprinting:**
+**HTTP Probing & Fingerprinting (sequence 3)**
 
 * `httpx` memeriksa status code, judul halaman, dan teknologi (`Wappalyzer` logic).
 * Output: Kamu sekarang tahu mana yang `200 OK` dan mana yang pakai `Laravel`, `React`, atau `Nginx`.
 
-#### 3. The Processing & Filtering (Data Refinement)
+**Mencari pintu masuk tersembunyi (sequence 4)**
 
-Setelah subdomain terkumpul, kita tidak langsung scan semuanya (buang-buang resource).
+* Spidering: `katana` atau `gau` merayap di setiap subdomain yang hidup untuk mencari file `.js`, `.php`, atau endpoint API.
+* Parameter Discovery: `paramspider` atau `arjun` mencari parameter tersembunyi (misal: `?debug=true` atau `?admin=1`).
+* Data Ingestion: Semua URL dan parameter baru masuk ke tabel `endpoints`.
 
-* Worker 2 (Prober) mengambil daftar subdomain dari Postgres.
-* Dia menjalankan `httpx` untuk cek: "Mana yang hidup? Mana yang pakai HTTPS? Apa status code-nya?"
-* Data di Postgres di-_update_. Sekarang kita punya daftar target yang valid dan hidup.
+### FASE 3: Vulnerability Engine (The Hunter) (not started)
 
-#### 4. The Vulnerability Engine (Scanning Phase)
+Mencari celah secara otomatis.
 
-Sekarang mesin utama bekerja.
-
-* Worker 3 (Scanner) menjalankan `nuclei` hanya pada target yang statusnya `is_alive = true`.
-* Jika ditemukan potensi celah (misal: _Exposed Dashboard_), hasilnya dikirim kembali ke Database dengan status `Potential`.
+1. Template Scanning: `nuclei` dijalankan dengan kumpulan template (CVE terbaru, miskonfigurasi, dll.).
+2. Fuzzing: Untuk endpoint yang menarik, `ffuf` melakukan directory brute-force.
+3. Dedicated Scan: Jika ditemukan input form, `dalfox` (XSS) atau `sqlmap` (SQLi) dipicu untuk pengujian spesifik.
 
 #### 5. The AI Intelligence Layer (Decision Making)
 
