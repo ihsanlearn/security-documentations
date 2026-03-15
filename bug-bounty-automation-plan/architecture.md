@@ -23,8 +23,8 @@ Flow
 
 * Memasukan target domain
 * Frontend kirim ke FastAPI
-* FastAPI menerima request, memvalidasi formatnya lalu menyimpan ke PostgreSQL (dengan status queued) dan melaporkan ke Redis
-* Perfect mendeteksi new task dan memicu workflow. Perfect juga mengatur agar Fase 2 selesai dulu sebelum Fase 3 dimulai
+* FastAPI menerima request, memvalidasi formatnya lalu menyimpan ke PostgreSQL (dengan status queued sebagai presistence data) akan tetapi juga melaporkan ke Redis (sebagai antrian catatan task)
+* Perfect sebagai manager yang memantau redis, juga mendeteksi new task dan memicu workflow. Karena ini juga, Perfect dapat mengatur agar Fase 2 selesai dulu sebelum Fase 3 dimulai
 
 {% hint style="info" %}
 Izinkan input multiple target.
@@ -36,13 +36,35 @@ To do:
 * Status yang disimpan ke PostgreSQL
 {% endhint %}
 
-#### 2. The Orchestration (Task Distribution)
+### FASE 2: Passive & Active Recon (The Muscle - Go Tools)
 
-Di sinilah Celery atau Temporal bekerja.
+```
+         Redis
+           |
+        Perfect
+           |
+     Perfect Worker
+```
 
-* Worker 1 (Recon Specialist) melihat ada antrean baru. Dia mengambil tugas "Recon google.com".
+Di sinilah Perfect bekerja.
+
+* Worker mulai bekerja begitu melihat ada antrean baru. Dia mengambil tugas "Recon google.com".
 * Dia menjalankan `subfinder`, `amass`, dan `assetfinder`.
 * Hasilnya (ribuan subdomain) tidak disimpan di file `.txt`, tapi langsung di-_insert_ ke PostgreSQL.
+
+**Subdomain Enumeration:**
+
+* Sistem menjalankan `subfinder`, `assetfinder`, dan `amass` secara paralel.
+* Logic: Hasil digabung (unique) disimpan ke tabel `subdomains`.
+
+**DNS Resolution:**
+
+* `dnsx` digunakan untuk memilah subdomain yang sudah mati.
+
+**HTTP Probing & Fingerprinting:**
+
+* `httpx` memeriksa status code, judul halaman, dan teknologi (`Wappalyzer` logic).
+* Output: Kamu sekarang tahu mana yang `200 OK` dan mana yang pakai `Laravel`, `React`, atau `Nginx`.
 
 #### 3. The Processing & Filtering (Data Refinement)
 
