@@ -36,6 +36,8 @@ To do:
 * Status yang disimpan ke PostgreSQL
 {% endhint %}
 
+***
+
 ### FASE 2: Passive & Active Recon (The Muscle - Go Tools)
 
 ```
@@ -46,24 +48,61 @@ To do:
      Perfect Worker
 ```
 
-**Subdomain Enumeration (sequence 1)**
+#### Sequence 1
+
+**Subdomain Enumeration**
 
 * Sistem menjalankan `subfinder`, `assetfinder`, dan `amass` secara paralel.
 * Logic: Hasil digabung (unique) disimpan ke tabel `subdomains`.
 
-**DNS Resolution (sequence 2)**
+**Cloud Assets & S3 Bucket Discovery**
 
-* `dnsx` digunakan untuk memilah subdomain yang sudah mati.
+* Gunakan `cloud_enum`
 
-**HTTP Probing & Fingerprinting (sequence 3)**
+#### Sequence 2
+
+**Subdomain Permutation**
+
+* Setelah mendapatkan kumpulan subdomain, gunakan tools seperti `alterx`, `gotator`
+
+#### Sequence 3
+
+**DNS Resolution**
+
+* `dnsx` , `puredns`, `shuffledns` digunakan untuk memilah subdomain termasuk hasil permutasi.
+
+#### Sequence 4
+
+**HTTP Probing & Fingerprinting**
 
 * `httpx` memeriksa status code, judul halaman, dan teknologi (`Wappalyzer` logic).
 * Output: Kamu sekarang tahu mana yang `200 OK` dan mana yang pakai `Laravel`, `React`, atau `Nginx`.
 
-**Mencari pintu masuk tersembunyi (sequence 4)**
+**Port Scanning**
 
-* Spidering: `katana` atau `gau` merayap di setiap subdomain yang hidup untuk mencari file `.js`, `.php`, atau endpoint API.
-* Parameter Discovery: `paramspider` atau `arjun` mencari parameter tersembunyi (misal: `?debug=true` atau `?admin=1`).
+* Setelah mendapatkan kumpulan subdomain, masing masing dari itu discan port apa aja yang terbuka menggunakan tool `naabu`&#x20;
+
+**URL Collection**
+
+* Gunakan tools seperti `gau`, `waybackurl` untuk mengumpulkan URL
+
+**Directory & File Bruteforcing**
+
+* Gunakan `dirsearch`, `ffuf` untuk bruteforce file atau directory tersembunyi
+
+**Mencari pintu masuk tersembunyi**
+
+* Spidering: `katana` merayap di setiap subdomain yang hidup untuk mencari file `.js`, `.php`, atau endpoint API.
+
+#### Sequence 5
+
+**NMAP Scan**
+
+* Hasil dari port scanning `naabu` digunakan untuk input scan `nmap`
+
+**Parameter Discovery**
+
+* `paramspider` atau `arjun` mencari parameter tersembunyi (misal: `?debug=true` atau `?admin=1`).
 * Data Ingestion: Semua URL dan parameter baru masuk ke tabel `endpoints`.
 
 ### FASE 3: Vulnerability Engine (The Hunter) (not started)
